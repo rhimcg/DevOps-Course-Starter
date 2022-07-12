@@ -15,12 +15,17 @@ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-
 ### Poetry installation (PowerShell)
 
 ```powershell
-(Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py -UseBasicParsing).Content | python -
+(Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python -
 ```
 
 ## Dependencies
 
 The project uses a virtual environment to isolate package dependencies. To create the virtual environment and install required packages, run the following from your preferred shell:
+
+bash or powershell
+```
+pip install  python-dotenv
+```
 
 ```bash
 $ poetry install

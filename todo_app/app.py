@@ -21,3 +21,6 @@ def add_todo():
     print(newTodo)
     add_item(newTodo)
     return redirect('/todos')
+
+while True:
+    print('bun')

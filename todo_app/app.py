@@ -16,11 +16,6 @@ def get_todos():
 
 @app.route('/add-todo', methods=['POST'])
 def add_todo():
-    print('Hello')
     newTodo = request.form.get('new-todo')
-    print(newTodo)
     add_item(newTodo)
-    return redirect('/todos')
-
-while True:
-    print('bun')
+    return redirect('/')

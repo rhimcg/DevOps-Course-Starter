@@ -22,11 +22,6 @@ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-
 
 The project uses a virtual environment to isolate package dependencies. To create the virtual environment and install required packages, run the following from your preferred shell:
 
-bash or powershell
-```
-pip install  python-dotenv
-```
-
 ```bash
 $ poetry install
 ```

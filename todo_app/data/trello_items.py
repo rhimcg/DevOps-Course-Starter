@@ -8,14 +8,10 @@ trello_keys = ('&key=%s&token=%s' % (os.environ.get('TRELLO_KEY'), os.environ.ge
 
 def get_items():
     args = ("boards/%s/lists?cards=open" % board_id)
-    lists =  requests.get(trello_base + args + trello_keys)#this is a list of columns
+    lists =  requests.get(trello_base + args + trello_keys)
     lists = lists.json()
     cards = []
-    print('hi')
-    print(lists)
-    print(len(lists))
     for list in lists:
-        print(list)
         for card in list['cards']:
             cards.append(Item.from_trello_card(Item, card, list))
     return cards

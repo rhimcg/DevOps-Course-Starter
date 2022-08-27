@@ -12,7 +12,11 @@
       <h2>Items</h2>
       <ul class="list-group mb-4">
         {% for item in items%}
-          <li>{{item.title}}</li>
+          <li><span>
+            {{item.title}} 
+              <a href="{{url_for('complete_todo', id=item.id)}}">Done</a>
+            </span>
+          </li>
         {% endfor %}
       </ul>
     </div>

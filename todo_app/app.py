@@ -1,5 +1,5 @@
 from flask import Flask, redirect, render_template, request
-from todo_app.data.trello_items import get_items, add_item
+from todo_app.data.trello_items import get_items, add_item, complete_item
 
 from todo_app.flask_config import Config
 
@@ -16,4 +16,9 @@ def get_todos():
 def add_todo():
     newTodo = request.form.get('new-todo')
     add_item(newTodo)
+    return redirect('/')
+
+@app.route('/complete-todo/<id>')
+def complete_todo(id):
+    complete_item(id)    
     return redirect('/')

@@ -19,11 +19,15 @@ def get_items():
   args = ("boards/%s/lists?cards=open" % board_id)
   lists =  requests.get(trello_base + args + '&' + trello_keys)
   lists = lists.json()
-  cards = []
+  todo_cards = []
+  done_cards = []
   for list in lists:
       for card in list['cards']:
-          cards.append(Item.from_trello_card(Item, card, list))
-  return cards
+        if card['idList'] == trello_todo_list_id:
+          todo_cards.append(Item.from_trello_card(Item, card, list))
+        elif card['idList'] == trello_done_list_id:
+          done_cards.append(Item.from_trello_card(Item, card, list))
+  return todo_cards, done_cards
 
 def add_item(title):
   args = ('cards?name=%s&idList=%s' % (urllib.parse.quote(title), trello_todo_list_id))

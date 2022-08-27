@@ -9,9 +9,9 @@
 
   <div class="row">
     <div class="col-md-12">
-      <h2>Items</h2>
+      <h2>To do Items</h2>
       <ul class="list-group mb-4">
-        {% for item in items%}
+        {% for item in todo_items%}
           <li><span>
             {{item.title}} 
               <a href="{{url_for('complete_todo', id=item.id)}}">Done</a>
@@ -20,6 +20,7 @@
         {% endfor %}
       </ul>
     </div>
+   
   </div>
   <div>
     <div>
@@ -31,6 +32,16 @@
           </button>
         </div>
       </form>
+    </div>
+    <div class="col-md-12">
+      <h2>Done Items</h2>
+      <ul class="list-group mb-4">
+        {% for item in done_items%}
+          <li>
+            {{item.title}} 
+          </li>
+        {% endfor %}
+      </ul>
     </div>
   </div>
 {% endblock %}

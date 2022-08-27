@@ -9,8 +9,8 @@ app.config.from_object(Config())
 
 @app.route('/')
 def get_todos():
-    items = get_items()
-    return render_template('index.html', items = items)
+    [todo_items, done_items] = get_items()
+    return render_template('index.html', todo_items = todo_items, done_items=done_items)
 
 @app.route('/add-todo', methods=['POST'])
 def add_todo():

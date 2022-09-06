@@ -4,7 +4,10 @@ trello_base = "https://trello.com/1/"
 board_id = os.environ.get("TRELLO_BOARD_ID")
 trello_todo_list_id = os.environ.get('TRELLO_TODO_LIST_ID')
 trello_done_list_id = os.environ.get('TRELLO_DONE_LIST_ID')
-trello_keys = ('&key=%s&token=%s' % (os.environ.get('TRELLO_KEY'), os.environ.get('TRELLO_TOKEN')))
+trello_keys = {
+  'key': os.environ.get('TRELLO_KEY'),
+  'token': os.environ.get('TRELLO_TOKEN')
+}
 
 class Item:
   def __init__(self, id, title, status='To do'):
@@ -16,8 +19,13 @@ class Item:
     return cls(card['id'], card['name'], list['name'])
 
 def get_items():
-  args = ("boards/%s/lists?cards=open" % board_id)
-  lists =  requests.get(trello_base + args + '&' + trello_keys)
+  args = ("boards/%s/lists" % board_id)
+  url = trello_base + args
+  params = {
+    **trello_keys,
+    'cards': 'open'
+  }
+  lists =  requests.get(url, params = params)
   lists = lists.json()
   todo_cards = []
   done_cards = []
@@ -30,10 +38,22 @@ def get_items():
   return todo_cards, done_cards
 
 def add_item(title):
-  args = ('cards?name=%s&idList=%s' % (urllib.parse.quote(title), trello_todo_list_id))
-  requests.post(trello_base + args + trello_keys) 
+  args = ('cards')
+  url = trello_base + args
+  params = {
+    **trello_keys,
+    'name': title,
+    'idList': trello_todo_list_id
+  }
+
+  requests.post(url, params = params) 
 
 def complete_item(item_id):
-  args = ('cards/%s?idList=%s' % (item_id, trello_done_list_id))
-  requests.put(trello_base + args + trello_keys)
+  args = ('cards/%s' % item_id)
+  url = trello_base + args
+  params = {
+    **trello_keys,
+    'idList': trello_done_list_id
+  }
+  requests.put(url, params = params)
 

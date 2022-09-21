@@ -16,8 +16,6 @@ def get_items(board_id, trello_base, trello_keys):
     **trello_keys,
     'cards': 'open'
   }
-  print(url)
-  print(params)
   lists = requests.get(url, params = params)
   lists = lists.json()
   cards = []

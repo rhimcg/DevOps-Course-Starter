@@ -52,7 +52,7 @@ def get_items_stub(url, params):
                         'name': 'In progress'
                     },
                     {
-                        'id': '101',
+                        'id': '112',
                         'name': 'In progress'
                     }
                 ]

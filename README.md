@@ -55,3 +55,18 @@ You should see output similar to the following:
  * Debugger PIN: 226-556-590
 ```
 Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser to view the app.
+
+## Running the tests
+
+This app uses automated testing, to run the unit tests first run 
+``` 
+$ poetry add pytest --dev 
+```
+to install the testing dependency.
+
+To run the tests from the command line run 
+```
+$ poetry run pytest
+```
+
+To run the tests in visual studio use the Test Explorer under the conical flask icon in visual studio. Click refresh to show the tests and play to run them.

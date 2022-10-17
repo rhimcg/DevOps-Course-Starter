@@ -10,7 +10,7 @@
     <div class="col-md-12">
       <h2>To do Items</h2>
       <ul class="list-group mb-4">
-        {% for item in todo_items%}
+        {% for item in view_model.todo_items%}
           <li><span>
             {{item.title}} 
               <a href="{{url_for('complete_todo', id=item.id)}}">Done</a>
@@ -34,7 +34,7 @@
     <div class="col-md-12">
       <h2>Done Items</h2>
       <ul class="list-group mb-4">
-        {% for item in done_items%}
+        {% for item in view_model.done_items%}
           <li>
             {{item.title}} 
           </li>

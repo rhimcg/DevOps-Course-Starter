@@ -32,3 +32,7 @@
       version: 'module-4'
       repo: 'https://github.com/rhimcg/DevOps-Course-Starter.git'
 
+  - name: install dependencies
+    ansible.builtin.shell: poetry_install.sh
+
+

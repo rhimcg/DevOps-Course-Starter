@@ -3,7 +3,6 @@
   remote_user: ec2-user
 
   vars_prompt:
-
   - name: trello_key
     prompt: What is your trello key?
     private: no
@@ -11,6 +10,10 @@
   - name: trello_token
     prompt: What is your trello token?
     private: no 
+
+  - name: secret_key
+    prompt: What is your secret key?
+    private: no  
 
   tasks:
   - name: Install git
@@ -50,9 +53,20 @@
     become: yes
 
   - name: create env
-    ansible.builin.template:
+    ansible.builtin.template:
       dest: /opt/todoapp/.env
-      src: /opt/todoapp/.env.j2
+      src: /etc/ansible/.env.j2
+    become: yes
 
+  - name: copy todoapp service
+    ansible.builtin.copy:
+      dest: /etc/systemd/system/todoapp.service
+      src: /opt/todoapp/todoapp.service
+    become: yes
 
-    
+  - name: start service 
+    ansible.builtin.systemd:
+      name: todoapp
+      daemon_reload: true
+      state: restarted
+    become: yes

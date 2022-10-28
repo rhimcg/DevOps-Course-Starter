@@ -70,3 +70,11 @@ $ poetry run pytest
 ```
 
 To run the tests in visual studio use the Test Explorer under the conical flask icon in visual studio. Click refresh to show the tests and play to run them.
+
+## Running using ansible
+
+1. Copy `playbook.yml`, `hosts.yml `, and `.env.j2` to the control node
+2. Run `ansible-playbook playbook.yml -i hosts.yml`
+3. Enter the trello key, trello token, and the secret key when asked
+4. You should now be able to run the app on <MANAGED NODE IP ADDRESS>:5000
+ 

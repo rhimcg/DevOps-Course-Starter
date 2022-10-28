@@ -62,6 +62,7 @@
     ansible.builtin.copy:
       dest: /etc/systemd/system/todoapp.service
       src: /opt/todoapp/todoapp.service
+      remote_src: yes
     become: yes
 
   - name: start service 

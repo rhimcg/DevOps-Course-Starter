@@ -1,6 +1,7 @@
 from flask import Flask, redirect, render_template, request
 from todo_app.data.trello_items import get_items, add_item_to_list, complete_item
 from todo_app.flask_config import Config
+from .view_model import ViewModel
 import os
 
 def create_app():
@@ -33,19 +34,3 @@ def create_app():
       complete_item(id, trello_base, trello_keys, trello_done_list_id)    
       return redirect('/')
   return app
-
-class ViewModel:
-  def __init__(self, items):
-    self._items = items
-
-  @property
-  def todo_items(self):
-    return [item for item in self._items if item.status == 'To do']
-
-  @property 
-  def done_items(self):  
-    return [item for item in self._items if item.status == 'Done']
-  
-  @property 
-  def doing_items(self):
-    return [item for item in self._items if item.status == 'Doing']

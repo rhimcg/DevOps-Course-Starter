@@ -5,15 +5,15 @@
   vars_prompt:
   - name: trello_key
     prompt: What is your trello key?
-    private: no
+    private: yes
 
   - name: trello_token
     prompt: What is your trello token?
-    private: no 
+    private: yes
 
   - name: secret_key
     prompt: What is your secret key?
-    private: no  
+    private: yes 
 
   tasks:
   - name: Install git
@@ -31,6 +31,8 @@
     ansible.builtin.shell:
       cmd: 'curl -sSL https://install.python-poetry.org | python3 -'
     become: yes
+    args:
+      creates: ~/.local/bin/poetry
 
   - name: Create directory for app
     ansible.builtin.file:

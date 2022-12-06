@@ -78,3 +78,8 @@ To run the tests in visual studio use the Test Explorer under the conical flask 
 3. Enter the trello key, trello token, and the secret key when asked
 4. You should now be able to run the app on <MANAGED NODE IP ADDRESS>:5000
  
+## Using docker
+
+Docker build --tag todo-app:prod .
+
+ docker run --env-file ./.env -p 5000:8000 todo-app:prod

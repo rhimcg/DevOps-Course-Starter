@@ -7,4 +7,5 @@ RUN poetry install
 COPY .env.template /app/
 COPY todo_app /app/todo_app
 RUN cp .env.template .env
+EXPOSE 8000
 ENTRYPOINT poetry run gunicorn --bind 0.0.0.0 "todo_app.app:create_app()"

@@ -80,6 +80,11 @@ To run the tests in visual studio use the Test Explorer under the conical flask 
  
 ## Using docker
 
-Docker build --tag todo-app:prod .
+Run the following to launch the app using docker and gunicorn:
+1. `Docker build --tag todo-app:prod .`
+2. `docker run --env-file ./.env -p 5000:8000 todo-app:prod`
 
- docker run --env-file ./.env -p 5000:8000 todo-app:prod
+And the folling to run with docker and flask
+1. `Docker build --tag todo-app:dev .`
+2. `docker run --env-file ./.env -p 5001:8000 todo-app:dev`
+
